@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Lista de productos</title>
+   <link rel="stylesheet" type="text/css" href="/style.css">
+</head>
+<body>
+   <h1>Lista de productos</h1>
+
+   <table>
+      <thead>
+         <tr>
+            <th>Product ID</th>
+            <th>Brand</th>
+            <th>Title</th>
+            <th>Items</th>
+            <th>Image</th>
+         </tr>
+      </thead>
+      <tbody>
+         <% products.forEach(function(product) { %>
+            <tr>
+               <td><%= product.productId %></td>
+               <td><%= product.brand %></td>
+               <td><%= product.productTitle %></td>
+               <td><%= product.items.join(", ") %></td>
+               <td>
+                <% if (product.images && product.images.length > 0) { %>
+                    <img src="<%= product.images[0].imageUrl %>" alt="Product Image" width="100">
+                 <% } else { %>
+                    No image available
+                 <% } %>
+
+               </td>
+            </tr>
+         <% }) %>
+      </tbody>
+   </table>
+</body>
+</html>
